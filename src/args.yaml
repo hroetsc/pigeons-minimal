@@ -1,0 +1,63 @@
+OUTNAME: proteins_v105_ctrl
+PRED_ONLY: False
+USE_BEST_MODEL: True
+RESUME_TRAINING: False
+GRAPHFILE: data/graph_object_240229_5aa.pt
+INFILE_GRAPH: data/GRAPH_240229_5aa.csv
+INFILE_NODES: data/EMBEDDING_240229_5aa.csv
+
+# general specs
+TRAIN_ENCODER: False
+DATA_AUGMENTATION: False
+TRAIN_CLASSIFIER: True
+NO_AUGS: 0
+
+SELF_LOOPS: True
+NUM_NEIGHBOURS: -1
+BATCHSIZE: 64
+
+# loss weights
+USE_CLASS_WEIGHTS: True
+LOSSWEIGHTFCT: 1
+REVERSE_WEIGHTS: False
+FOCAL_LOSS: True # !!!!! change also last layer in  model !!!!!
+FOCAL_GAMMA: 1.5
+ALPHA1: 1
+ALPHA2: 0
+GAMMA_CONSTRAINT: 1.E-3
+
+# eochs, lr and weight decay
+EPOCHS: 5
+EPOCHS_AUG: 0
+LEARNING_RATE: 5.E-4
+WEIGHT_DECAY: 1.E-5
+WARMUP: False
+NOWARMUP: 0
+WARMUP_FACTOR: 0
+
+# data augmentation
+ENC_LR: 0.01
+AUG_MODE: single
+DIM_ENCODER: 128
+LAYERS_ENCODER: 2
+HEADS_ENCODER: 2
+NORM_ENCODER: True
+
+# classification
+DIM_CLASSIFIER: 1024
+LAYERS_CLASSIFIER: 4
+NORM_CLASSIFIER: False
+DROPOUT: 0.1
+DROPOUTOUT: 0.2
+CMAX: 0.1
+
+# just fmi
+lr scheduling: True
+classifier version: 4
+loss function: FocalLossNLL2
+altered number of hops in data loader to match total layers in classifier: False
+reaction loader: False
+subgraph type for neighbour loader: bidirectional
+sampler: null
+sample with replacement: False
+adjusted weights to consider overall frequency: totalsplit
